@@ -12,3 +12,23 @@
   shell: sh /tmp/script.sh
   args:
     executable: /bin/bash
+
+- name: Disable swap
+  command: swapoff -a
+
+- name: Add apt signing key K8s
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add apt repository K8s
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: k8s.list
+
+- name: Repo update
+  command: apt update
+
+- name: Install Kubeadm
+  command: apt install kubeadm
