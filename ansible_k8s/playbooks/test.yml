@@ -1,0 +1,5 @@
+---
+- name: Configure Hosts
+  hosts: 
+  roles:
+    - etc-host
