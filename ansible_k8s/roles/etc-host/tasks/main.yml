@@ -6,3 +6,8 @@
     mode: 644
     force: no
   become: yes
+
+- name: Add /etc/hosts
+  shell: cat /tmp/hosts >> /etc/hosts
+  args:
+    executable: /bin/bash
