@@ -1,0 +1,23 @@
+192.168.0.10   master.ridwan.com
+192.168.0.11   worker1.ridwan.com
+192.168.0.12   worker2.ridwan.com
+192.168.0.13   worker3.ridwan.com
+
+
+sudo apt update && apt install kubeadm
+
+sudo cat <<EOF | kubectl create -f -
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   namespace: metallb-system
+   name: config
+ data:
+   config: |
+     address-pools:
+     - name: default
+       protocol: layer2
+       addresses:
+       - 192.168.0.101-192.168.0.200
+
+ EOF
