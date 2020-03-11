@@ -2,7 +2,7 @@
 - name: Copy /etc/hosts to other server
   template:
     src: "hosts"
-    dest: "{{ tmp_host }}"
+    dest: "{{ tmp_dir }}"
     mode: 644
     force: no
   become: yes
