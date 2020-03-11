@@ -1,0 +1,8 @@
+---
+- name: Copy /etc/hosts to other server
+  template:
+    src: "hosts"
+    dest: "{{ tmp_host }}"
+    mode: 644
+    force: no
+  become: yes

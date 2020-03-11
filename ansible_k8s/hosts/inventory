@@ -1,6 +1,7 @@
 [master]
-master1 ansible_ssh_host=192.168.0.9
+master1 ansible_ssh_host=192.168.0.10
 
 [worker]
-worker1 ansible_ssh_host=192.168.0.10
-worker2 ansible_ssh_host=192.168.0.11
+worker1 ansible_ssh_host=192.168.0.11
+worker2 ansible_ssh_host=192.168.0.12
+worker2 ansible_ssh_host=192.168.0.13
