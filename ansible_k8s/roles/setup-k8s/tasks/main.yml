@@ -1,16 +1,14 @@
 
 ---
-- name: install CURL
-  shell: apt install curl
+- name: Copy script
+  template:
+    src: "script.sh"
+    dest: "{{ tmp_dir }}"
+    mode: 744
+    force: no
+  become: yes
 
-- name: Install Docker
-  shell: curl -sSL https://get.docker.com/ | sh
-
-- name: Add the Kubernetes signing key
-  shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-
-- name: Add Xenial K8s Repo
-  shell: apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-
-- name: Install Kubeadm
-  shell: apt update && apt install kubeadm
+- name: Run Script
+  shell: sh /tmp/script.sh
+  args:
+    executable: /bin/bash
