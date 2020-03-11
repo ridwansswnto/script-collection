@@ -1,13 +1,15 @@
 ---
-- name: Copy /etc/hosts to other server
-  template:
-    src: "hosts"
-    dest: "{{ tmp_dir }}"
-    mode: 644
-    force: no
-  become: yes
+- name: install CURL
+  command: apt install curl
 
-- name: Add /etc/hosts
-  shell: cat /tmp/hosts >> /etc/hosts
-  args:
-    executable: /bin/bash
+- name: Install Docker
+  command: curl -sSL https://get.docker.com/ | sh
+
+- name: Add the Kubernetes signing key
+  command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+
+- name: Add Xenial K8s Repo
+  command: apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+- name: Install Kubeadm
+  command: apt update && apt install kubeadm

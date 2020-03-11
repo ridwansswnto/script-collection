@@ -3,3 +3,4 @@
   hosts: all
   roles:
     - etc-host
+    - setup-k8s
