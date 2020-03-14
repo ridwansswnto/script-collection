@@ -32,3 +32,12 @@
 
 - name: Install Kubeadm
   command: apt install kubeadm
+  register: installed
+
+- name: Swap Off
+  command: swapoff -a
+
+- name: initialize k8s cluster 
+  command: kubeadm init --apiserver-advertise-address $(hostname -i)
+  when: installed is changed
+
