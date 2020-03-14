@@ -31,7 +31,7 @@
   command: apt update
 
 - name: Install Kubeadm
-  command: apt install kubeadm
+  command: apt install kubeadm -y
   register: installed
 
 - name: Swap Off
